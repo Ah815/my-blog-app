@@ -2,13 +2,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation"; // Import usePathname to detect the active route
-import { signOut, useSession } from "next-auth/react";
+
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname(); // Get the current path
-  const {status} = useSession()
+  
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -97,14 +97,12 @@ function Navbar() {
 
         {/* Search Input and Login Button for Large Screens */}
         <div className="hidden md:flex justify-between w-1/4 me-56 items-center">
-        {status === "unauthenticated" ? (
+       
 
           <Link href="/login" className="text-black hover:text-blue-300 px-4">
             Login
           </Link>
-          ) : (
-            <span onClick={signOut}>Logout</span>
-          ) }
+          
           <input
             type="text"
             placeholder="Search"

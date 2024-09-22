@@ -1,21 +1,12 @@
 "use client"
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+
 import React from "react";
 
 const Page = () => {
-  const { data, status } = useSession();
-  console.log(data, status)
-  const router = useRouter()
-
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
-  if (status === "authenticated") {
-    router.push('/')
-    }
+  
 
   return (
     <>
